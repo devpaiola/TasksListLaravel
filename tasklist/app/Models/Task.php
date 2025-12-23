@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
-    protected $fillable = ['title', 'description', 'status', 'due_date', 'priority'];
+    public $incrementing = false;
+    protected $keyType = 'string';
+    protected $fillable = ['title','description','due_date','status','priority','user_id'];
     
     public function user()
     {
